@@ -1,0 +1,52 @@
+Agile is software development methodology. It is very 
+effective where Client frequently changes his requirement.
+Since it has more iteration so you can assure a solution 
+that meets clients requirement.
+More than one build deployement for a project.
+It involves more client interection and testing effort.
+The steps in volved are : Scope,Define,Develop,Evaulate
+
+There are two methods by which this methodology can be 
+implemented:-
+
+1- Scrum
+2- Extreme Progamming
+
+Scrum: 
+======
+Each iteration would called a scrum which can be a 1-
+2 Months.In Scrum Client prioritise his requirements what 
+he want first. If developer did not meets all the 
+requirement which was being fixed for a perticular scrum 
+than rest of the development part would be transferred to 
+the next scrum (would be delievered in the next build),  
+means developer cann't increase time decided for a scrum.
+Its fixed.
+
+Extreme Programming (XP): 
+========================
+here iteration period would be 
+less then in scrum , which is being 2-4 weeks.
+Here developer prioritise what to do first on the basis of 
+client requirement.
+This duration which was being fixed for a iteration, can be 
+increase if the some development part is still pending. 
+The build would deployed with having all the client needs.
+Thus iteration period is not fixed here it can be increase.
+but iteration should meets all the client's requirement in 
+this build.
+
+More attension is required for testing in XP.
+
+
+ Agile Methodology- Characteristics
+
+-  Frequent Delivery
+
+-  More Iterations
+
+-  Test frequently
+
+-  Less defects
+
+
