@@ -14,30 +14,25 @@ implemented:-
 
 Scrum: 
 ======
-Each iteration would called a scrum which can be a 1-
-2 Months.In Scrum Client prioritise his requirements what 
-he want first. If developer did not meets all the 
-requirement which was being fixed for a perticular scrum 
-than rest of the development part would be transferred to 
-the next scrum (would be delievered in the next build),  
-means developer cann't increase time decided for a scrum.
+Each iteration would called a scrum and can be of 1-
+2 Months length.In Scrum, the client prioritizes his requirements what 
+he wants to get done first. If developer did not meets all the 
+requirement which was being fixed for a particular scrum, 
+rest of the development part would be transferred to 
+the next scrum (would be delivered in next build),  
+which means, developer cann't increase time decided for a scrum.
 Its fixed.
 
 Extreme Programming (XP): 
 ========================
-here iteration period would be 
-less then in scrum , which is being 2-4 weeks.
-Here developer prioritise what to do first on the basis of 
+Iteration period would be less then that in scrum. It is approximately 2-4 weeks.
+Here, the developer prioritizes what to do first on the basis of 
 client requirement.
-This duration which was being fixed for a iteration, can be 
-increase if the some development part is still pending. 
-The build would deployed with having all the client needs.
-Thus iteration period is not fixed here it can be increase.
-but iteration should meets all the client's requirement in 
-this build.
-
-More attension is required for testing in XP.
-
+The duration, which was fixed for a iteration, could be 
+increased if some development part was pending. 
+The build would be deployed with having all that what client needs.
+Thus, iteration period is not fixed, it can increase. The iteration should meets all the client's requirement in 
+this build.More attention is required for testing in XP.
 
  Agile Methodology- Characteristics
 
