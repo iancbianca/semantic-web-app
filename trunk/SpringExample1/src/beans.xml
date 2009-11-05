@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="HelloWorld" class="com.vanilla.HelloWorld">
+
+	<property name="message" value="Hello World!"></property>
+
+</bean>
+
+<bean id="user" class="com.vanilla.User" >         
+
+	<property name="name" value="Rajesh Kumar" /> 
+
+	<property name="age" value="38"/> 
+
+	<property name="country" value="India"/> 
+</bean>
+
+<bean id="user2" class="com.vanilla.User2" >   
+	
+	<constructor-arg value="Rajesh Kumar" /> 
+	
+	<constructor-arg value="38"/> 
+	
+	<constructor-arg value="India"/> 
+    
+</bean> 
+ 
+</beans>
+
+
