@@ -23,11 +23,11 @@
 
 <bean id="user2" class="com.vanilla.User2" >   
 	
-	<constructor-arg value="Rajesh Kumar" /> 
+	<constructor-arg  index="0" type="String" value="Rajesh Kumar" /> 
 	
-	<constructor-arg value="38"/> 
+	<constructor-arg index="1" type="int" value="38"/> 
 	
-	<constructor-arg value="India"/> 
+	<constructor-arg index="2" type="String" value="India"/> 
     
 </bean> 
  
