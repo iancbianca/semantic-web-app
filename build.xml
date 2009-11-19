@@ -1,0 +1,159 @@
+<project name="SpringMVCDynamicWebProject" default="compile" basedir="."> 
+	<property name="app.name"  value="SpringMVCDynamicWebProject"/>
+	<property name="build.home" value="${basedir}/build"/>
+	<property name="build.classes.dir" value="${build.home}/WEB-INF/classes"/>
+	<property name="dist.home" value="${basedir}/dist"/>	
+	<property name="tomcat.deploy"
+	 value="/usr/local/appservers/tomcat6new/webapps"/>
+	<property name="SpringMVCDynamicWebProject.src.dir" value="${basedir}/src"/>
+	<property name="tomcat.home" value="/usr/local/appservers/tomcat6new"/>
+	<property name="servlet.jar" value="${tomcat.home}/lib/servlet-api.jar"/>
+	
+			
+	
+	<!-- ==================== Compilation Classpath =========================== -->
+
+	<!--
+
+	  Rather than relying on the CLASSPATH environment variable, Ant includes
+	  features that makes it easy to dynamically construct the classpath you
+	  need for each compilation.  The example below constructs the compile
+	  classpath, as well as the other components
+	  that Tomcat/JBoss makes available to web applications automatically, plus anything
+	  that you explicitly added.
+
+	-->
+	<path id="compile.classpath">
+		 <!-- Include all JAR files that will be included in /WEB-INF/lib -->
+		<!-- This means that Ant will dynamically construct the classpath based on--> 
+		<!-- build.properties and include these jars in WEB-INF/lib -->
+		<!-- Remember, this inclusion has to be dynamic, right now it is not -->
+				<!--<pathelement location="${basedir}/WEB-INF/lib/servlet.jar"/>-->
+				<pathelement location="${servlet.jar}"/>
+				<pathelement location="${basedir}/WebContent/WEB-INF/lib/aopalliance-1.0.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/commons-logging-1.1.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/servlet-api-2.5"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/spring-2.5.6.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/spring-2.5.6.SEC01.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/spring-beans-2.5.5.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/spring-context-support-2.5.5.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/spring-core-2.5.6.jar"/>
+		        <pathelement location="${basedir}/WebContent/WEB-INF/lib/spring-webmvc-2.5.6.jar"/>
+				
+	</path>	
+	
+			
+	<!-- ==================== All Target ====================================== -->
+
+	<!--
+
+	  The "all" target is a shortcut for running the "clean" target followed
+	  by the "compile" target, to force a complete recompile.
+
+	-->
+
+	  <target name="all" depends="compile,clean"
+	   description="Clean build and dist, then compile"/>
+
+
+
+	<!-- ==================== Clean Target ==================================== -->
+
+	<!--
+
+	  The "clean" target deletes any previous "build" and "dist" directory,
+	  so that you can be ensured the application can be built from scratch.
+
+	-->
+
+	 <target name="clean"
+	   description="Delete old build and dist directories">
+	    <delete dir="${build.home}"/>
+	    <delete dir="${dist.home}"/>
+	  </target>
+ 
+		<target name="init">
+			  <tstamp/>
+			  <mkdir dir="${build.home}" />
+			  <mkdir dir="${dist.home}" />
+			  <mkdir dir="${build.home}/WEB-INF" /> 
+			  <mkdir dir="${build.home}/WEB-INF/classes" />
+			  <mkdir dir="${build.home}/WEB-INF/lib" />	
+		</target>
+	<!-- Compile Java classes as necessary -->
+	<!-- ==================== Compile Target ================================== -->
+
+	<!--
+
+	  The "compile" target transforms source files (from your "src" directory)
+	  into object files in the appropriate location in the build directory.
+	  This example assumes that you will be including your classes in an
+	  unpacked directory hierarchy under "/WEB-INF/classes".
+
+	-->
+	<!--
+	<target name="compile" depends="init" description="compiles the Java source code">
+		  <javac debug="true" 
+			  srcdir="${SpringMVCDynamicWebProject.src.dir}" 
+			  destdir="${build.classes.dir}">
+		    <classpath refid="compile.classpath"/>
+		  </javac> 
+		  		  
+		  <copy todir="${build.home}/WEB-INF"> 
+		    <fileset dir="${basedir}/WebContent/WEB-INF" >
+		      <include name="web.xml" />
+		    </fileset> 
+		  </copy> 
+	</target>
+	-->	
+	
+	<!--	
+	<target name="deploy" depends="compile" description="Build the distribution war file or Deploy application to servlet container">
+				    
+			 <copy  todir="${dist.home}">
+     			 <fileset dir="${build.home}"/>
+   			 </copy>
+				
+			<war basedir="${dist.home}" 
+	 			destfile="${dist.home}/${app.name}.war"/> 
+			<move file="${dist.home}/${app.name}.war" todir="${tomcat.deploy}"/>
+		  </target>
+	-->	  
+	
+      <target name="compile" depends="init" description="compiles the Java source code">
+		  <javac debug="true" 
+			  srcdir="${basedir}/src" 
+			  destdir="${build.home}/WEB-INF/classes"> 
+		    <classpath refid="compile.classpath"/>
+		  </javac> 
+		  <copy todir="${build.home}/WEB-INF"> 
+		    <fileset dir="${basedir}/WebContent/WEB-INF">
+		      <include name="web.xml" />
+		    </fileset> 
+		    <fileset dir="${basedir}/WebContent/WEB-INF">
+		      <include name="hellosemweb.jsp" />
+		    </fileset>
+		  </copy> 
+		 <copy todir="${build.home}/WEB-INF/classes"> 
+		    <fileset dir="${basedir}/src">
+		      <include name="**/SampleSemWebController.class"/>
+		    </fileset> 
+		 </copy>
+		
+	   </target>
+	
+	<target name="deploy" depends="compile" description="Build the distribution war file or Deploy application to servlet container">
+		<!-- Copy the contents of the build directory -->
+		    <!-- Copy external dependencies as required -->
+			 <copy  todir="${dist.home}">
+     			 <fileset dir="${build.home}"/>
+   			 </copy>
+				
+			<war basedir="${dist.home}" 
+	 			destfile="${dist.home}/${app.name}.war"/> 
+			<move file="${dist.home}/${app.name}.war" todir="${tomcat.deploy}"/>
+		  </target>
+		  
+		 
+	
+</project>
