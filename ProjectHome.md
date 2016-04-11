@@ -1,0 +1,1 @@
+A demo application will be built to demonstrate the basics of a semantic web application. This will be our immediate goal. The application is based on the J2EE perspective and is based on an MVC architecture. Spring will be used for the service layer and Struts for the front-end.
